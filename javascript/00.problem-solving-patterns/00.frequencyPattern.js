@@ -28,11 +28,38 @@ function validAnagram(a, b) {
   return true;
 }
 
-console.log(validAnagram('', '')); // true
-console.log(validAnagram('aaz', 'zza')); // false
-console.log(validAnagram('anagram', 'nagaram')); // true
-console.log(validAnagram('rat', 'car')); // false
-console.log(validAnagram('awesome', 'awesom')); // false
-console.log(validAnagram('amanaplanacanalpanama', 'acanalmanplanpamana')); // false
-console.log(validAnagram('qwerty', 'qeywrt')); // true
-console.log(validAnagram('texttwisttime', 'timetwisttext')); // true
+function sameFrequencyOfDigits(a, b) {
+  let numberA = {};
+  let numberB = {};
+  if (a.toString().length !== b.toString().length || isNaN(a) || isNaN(b))
+    return false;
+  a.toString()
+    .split('')
+    .forEach((digit) => {
+      numberA[digit] = numberA[digit] ? ++numberA[digit] : 1;
+    });
+  b.toString()
+    .split('')
+    .forEach((digit) => {
+      numberB[digit] = numberB[digit] ? ++numberB[digit] : 1;
+    });
+  for (const key in numberA) {
+    if (!numberB[key]) return false;
+    if (numberA[key] !== numberB[key]) return false;
+  }
+  return true;
+}
+
+// console.log(validAnagram('', '')); // true
+// console.log(validAnagram('aaz', 'zza')); // false
+// console.log(validAnagram('anagram', 'nagaram')); // true
+// console.log(validAnagram('rat', 'car')); // false
+// console.log(validAnagram('awesome', 'awesom')); // false
+// console.log(validAnagram('amanaplanacanalpanama', 'acanalmanplanpamana')); // false
+// console.log(validAnagram('qwerty', 'qeywrt')); // true
+// console.log(validAnagram('texttwisttime', 'timetwisttext')); // true
+
+console.log(sameFrequencyOfDigits(182, 281)); // true
+console.log(sameFrequencyOfDigits(34, 14)); // false
+console.log(sameFrequencyOfDigits(3589578, 5879385)); // true
+console.log(sameFrequencyOfDigits(22, 222)); // false
