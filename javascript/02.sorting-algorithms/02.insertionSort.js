@@ -1,5 +1,5 @@
 /**
- * picks and index and trace back till start of the array once correct place to element is found
+ * picks an index and trace back till start of the array once correct place to element is found
  * it shift all the subsequent element to one index right and inserts the value at the correct index
  *
  * this works well with almost sorted datasets
